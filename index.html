@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beef Shank Pot Roast</title>
+<meta name="description" content="Beef shank pot roast, ad-free, adapted from Spend With Pennies for a 4.72 lb bone-in shank.">
+<meta name="theme-color" content="#fdf8f1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23a8442a'/%3E%3Ctext x='16' y='23' font-size='19' text-anchor='middle' fill='%23fff4e6' font-family='Georgia,serif'%3Eb%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#fdf8f1;
+  --card:#fffdfa;
+  --ink:#241c17;
+  --ink-soft:#6b5c51;
+  --line:#e4d7c8;
+  --accent:#a8442a;
+  --accent-ink:#7d2f1a;
+  --flag:#8a6a12;
+  --flag-bg:#fdf2d6;
+  --ok:#3f6b3f;
+  --ok-bg:#eef4ea;
+  --col:34rem;
+  --pad:1.15rem;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font:400 17px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  padding-bottom:calc(120px + env(safe-area-inset-bottom));
+}
+.wrap{max-width:var(--col);margin:0 auto;padding:0 var(--pad)}
+header{padding:1.5rem 0 1rem}
+.eyebrow{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink);font-weight:700;margin:0 0 .5rem}
+h1{font:700 1.6rem/1.15 Georgia,"Times New Roman",serif;margin:0 0 .55rem;letter-spacing:-.01em}
+.sub{margin:0;color:var(--ink-soft);font-size:.95rem}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin:.9rem 0 0;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);background:var(--card);padding:.35rem .5rem;border-radius:2px;font-size:.76rem;color:var(--ink-soft);text-align:center;line-height:1.3}
+.chips b{display:block;color:var(--ink);font-size:.86rem}
+section{margin:1.7rem 0 0}
+h2{font:700 .78rem/1 sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--accent-ink);margin:0 0 .8rem;padding-bottom:.45rem;border-bottom:1px solid var(--line)}
+h2 .hint{float:right;text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-soft);font-size:.72rem}
+.batch{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.batch + .batch{margin-top:.5rem}
+.batch button{
+  font:inherit;font-size:.85rem;line-height:1.25;padding:.65rem .55rem;min-height:58px;
+  background:var(--card);color:var(--ink-soft);border:2px solid var(--line);border-radius:2px;
+  cursor:pointer;text-align:left;
+}
+.batch button b{display:block;color:var(--ink);font-size:.95rem}
+.batch button .tick{display:none;margin-right:.3rem;color:var(--ok)}
+.batch button[aria-pressed="true"]{border-color:var(--accent);background:#fdf1ec}
+.batch button[aria-pressed="true"] .tick{display:inline}
+.batch button:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}
+ul.ing{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+ul.ing li{border-bottom:1px solid var(--line)}
+label.pick{display:flex;gap:.65rem;align-items:flex-start;padding:.6rem .1rem;cursor:pointer}
+label.pick input{margin:.25rem 0 0;width:20px;height:20px;accent-color:var(--accent);flex:0 0 auto}
+.txt{display:block;font-size:.95rem}
+.txt .qty{font-weight:650}
+.txt small{display:block;color:var(--ink-soft);font-size:.78rem;line-height:1.4;margin-top:.15rem}
+label.pick input:checked + .txt{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:#c8b7a6}
+label.pick input:checked + .txt small{text-decoration:none}
+.progress{display:flex;justify-content:space-between;gap:1rem;font-size:.8rem;color:var(--ink-soft);margin:.7rem 0 .35rem}
+.bar{height:4px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .18s ease}
+ol.steps{margin:0;padding-left:1.1rem}
+ol.steps li{margin:.85rem 0;font-size:.96rem}
+ol.steps li::marker{font-weight:700;color:var(--accent-ink)}
+.warn{display:block;background:var(--flag-bg);border-left:3px solid var(--flag);padding:.4rem .55rem;margin:.4rem 0 0;font-size:.82rem;color:#5b4a1d}
+.timer{border:1px solid var(--line);background:var(--card);border-radius:2px;padding:.9rem}
+.clock{font:700 2.1rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.02em}
+.state{margin:.35rem 0 .7rem;font-size:.82rem;color:var(--ink-soft)}
+.trow{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}
+.trow button{
+  font:inherit;font-size:.88rem;min-height:48px;border-radius:2px;cursor:pointer;
+  border:2px solid var(--accent);background:var(--accent);color:#fff4e6;font-weight:650;
+}
+.trow button.ghost{background:var(--card);color:var(--accent-ink)}
+.trow button:focus-visible{outline:3px solid var(--accent-ink);outline-offset:2px}
+ul.notes{list-style:none;margin:0;padding:0}
+ul.notes li{border:1px solid var(--line);background:var(--card);padding:.7rem .8rem;border-radius:2px;margin-bottom:.5rem;font-size:.9rem}
+ul.notes li.hot{background:var(--flag-bg);border-color:#e6cf9a}
+ul.notes li b{color:var(--accent-ink)}
+footer{margin:2rem 0 0;padding-top:1rem;border-top:1px solid var(--line);font-size:.82rem;color:var(--ink-soft)}
+footer a{color:var(--accent-ink)}
+.dock{
+  position:fixed;left:0;right:0;bottom:0;background:rgba(253,248,241,.97);
+  border-top:1px solid var(--line);padding:.55rem var(--pad) calc(.55rem + env(safe-area-inset-bottom));
+  backdrop-filter:blur(6px);
+}
+.dock .inner{max-width:var(--col);margin:0 auto;display:flex;align-items:center;gap:.75rem}
+.dock span{font-size:.8rem;color:var(--ink-soft)}
+.dock button{margin-left:auto;font:inherit;font-size:.85rem;font-weight:650;border:2px solid var(--ink);background:var(--ink);color:#fdf8f1;padding:.5rem .9rem;border-radius:2px;cursor:pointer}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Braise &middot; <span id="ebtemp">300&deg;F</span> oven &middot; 4 to 4.5 hrs</p>
+  <h1>Beef Shank Pot Roast</h1>
+  <p class="sub">The Spend With Pennies pot roast, rebuilt for one 4.72 lb bone-in shank. Longer, wetter, more collagen.</p>
+  <ul class="chips">
+    <li><b>4.72 lb</b> bone-in shank</li>
+    <li><b id="chipyield">3.2&ndash;3.5 lb</b> usable meat</li>
+    <li><b id="chipsalt">2&frac12; tsp</b> salt</li>
+    <li><b id="chipsauce">4&frac12; cups</b> liquid</li>
+  </ul>
+</header>
+
+<section>
+  <h2>1. This shank</h2>
+  <div class="batch">
+    <button type="button" id="k1" aria-pressed="true" data-cut="k">
+      <b><span class="tick" aria-hidden="true">&#10003;</span>4.72 lb as bought</b>Bone-in, feeds 8
+    </button>
+    <button type="button" id="k2" aria-pressed="false" data-cut="m">
+      <b><span class="tick" aria-hidden="true">&#10003;</span>Meat only</b>If the butcher removed the bone
+    </button>
+  </div>
+  <div class="batch">
+    <button type="button" id="m1" aria-pressed="true" data-mode="c">
+      <b><span class="tick" aria-hidden="true">&#10003;</span>Conventional</b>No fan, 300&deg;F
+    </button>
+    <button type="button" id="m2" aria-pressed="false" data-mode="v">
+      <b><span class="tick" aria-hidden="true">&#10003;</span>Convection</b>Fan on, 275&deg;F
+    </button>
+  </div>
+</section>
+
+<section>
+  <h2>2. Ingredients</h2>
+  <ul class="ing" id="ing">
+    <li><label class="pick"><input type="checkbox" data-k="i1"><span class="txt"><span class="qty" data-a="1 tbsp" data-b="1 tbsp">1 tbsp</span> olive oil, more if the pot is tight<small>Shank is irregular, you may want 2 tbsp to sear every face.</small></span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i2"><span class="txt"><span class="qty" data-a="4.72 lb" data-b="3.4 lb">4.72 lb</span> beef shank<small>Thick silver skin trimmed, tied if it is a whole shank so it does not splay.</small></span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i3"><span class="txt"><span class="qty" data-a="2&frac12; tsp" data-b="2 tsp">2&frac12; tsp</span> kosher salt<small>Salt to weight, not to the recipe. About 1&percnt; of meat weight.</small></span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i4"><span class="txt"><span class="qty" data-a="1 tsp" data-b="1 tsp">1 tsp</span> cracked black pepper</span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i5"><span class="txt"><span class="qty" data-a="1 large" data-b="1 large">1 large</span> yellow onion, chopped<small>It dissolves into the gravy, that is the point of it.</small></span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i6"><span class="txt"><span class="qty" data-a="1 tbsp" data-b="1 tbsp">1 tbsp</span> tomato paste<small>Not in the original. Shank needs it for depth.</small></span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i7"><span class="txt"><span class="qty" data-a="1&frac12; cups" data-b="1&frac12; cups">1&frac12; cups</span> dry red wine<small>Cabernet, malbec, merlot. Reduce it by half before the broth goes in.</small></span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i8"><span class="txt"><span class="qty" data-a="3 cups" data-b="3 cups">3 cups</span> beef broth<small>Not low sodium. The gravy needs the body.</small></span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i9"><span class="txt"><span class="qty" data-a="4 cloves" data-b="4 cloves">4 cloves</span> garlic, coarsely chopped</span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i10"><span class="txt"><span class="qty" data-a="&frac12; tsp" data-b="&frac12; tsp">&frac12; tsp</span> dried rosemary</span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i11"><span class="txt"><span class="qty" data-a="&frac12; tsp" data-b="&frac12; tsp">&frac12; tsp</span> dried thyme</span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i12"><span class="txt"><span class="qty" data-a="1" data-b="1">1</span> bay leaf</span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i13"><span class="txt"><span class="qty" data-a="1 lb" data-b="1 lb">1 lb</span> baby potatoes<small>Added late. Russets fall apart, baby or red hold.</small></span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i14"><span class="txt"><span class="qty" data-a="4" data-b="4">4</span> carrots, 2 inch pieces<small>Bigger than you think, they cook 2 hours.</small></span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i15"><span class="txt"><span class="qty" data-a="2 ribs" data-b="2 ribs">2 ribs</span> celery, 1&frac12; inch pieces</span></label></li>
+    <li><label class="pick"><input type="checkbox" data-k="i16"><span class="txt"><span class="qty" data-a="1 tbsp" data-b="1 tbsp">1 tbsp</span> cornstarch, for the gravy<small>Start here. Shank drippings gel on their own, so you need less than the original.</small></span></label></li>
+  </ul>
+  <div class="progress"><span id="count">0 of 16 gathered</span><span id="yield">Serves 8</span></div>
+  <div class="bar"><i id="barfill"></i></div>
+</section>
+
+<section>
+  <h2>3. Method</h2>
+  <ol class="steps">
+    <li>Salt the shank now, on all faces, and leave it on the counter 45 minutes, or overnight uncovered in the fridge. Trim the thick bands of silver skin but leave the bone in place.</li>
+    <li>Heat the oven to <b id="steptemp">300&deg;F</b>.</li>
+    <li>Heat the oil in a Dutch oven over medium-high until it shimmers. Sear the shank on every reachable face, <b>5 to 6 minutes a side</b>. It is an irregular shape, so work in stages and do not force it flat.
+      <span class="warn">Browning every face matters more here than on chuck. Shank has less fat, so the crust is carrying the flavor.</span></li>
+    <li>Move the shank out. Soften the onion in the same pot, 4 minutes, scraping the dark bits up.</li>
+    <li>Stir in the tomato paste and let it darken for 60 seconds against the hot pan.</li>
+    <li>Pour in the wine and let it reduce by half, about 5 minutes. This is an extra step the original does not have, and it is worth it for shank.</li>
+    <li>Add the broth, garlic, rosemary, thyme and bay leaf. Return the shank, bone side down if it has one. Liquid should come about halfway up the meat, not cover it.</li>
+    <li>Bring to a bare simmer on the stovetop, then cover and braise <b id="stepbraise">2&frac12; hours</b>.</li>
+    <li>Add the potatoes, carrots and celery around the meat. Cover and go another <b id="stepveg">1&frac12; to 2 hours</b>, so <b id="steptotal">4 to 4&frac12; hours</b> total.</li>
+    <li>Check at <span id="probeat">3&frac12; hours</span>. Twist a fork in the thickest part: it should give almost no resistance, and the meat should be pulling back from the bone.
+      <span class="warn">Undercooked shank is the one failure that ruins the dish. If it fights the fork, give it 30 more minutes and check again.</span></li>
+    <li>Lift the shank out, rest it 10 minutes, then pull or slice it. Discard the bay leaf. Skim the fat from the liquid, bring it to a simmer, and whisk in a cornstarch slurry a little at a time. Add more only if it stays thin.</li>
+    <li>Serve in wide bowls with the sauce spooned over. Bread or boiled potatoes beat mashed here, the sauce is already rich.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>4. Braise timer</h2>
+  <div class="timer">
+    <div class="clock" id="clock">00:00</div>
+    <p class="state" id="state" aria-live="polite">Start it the moment the pot goes in the oven.</p>
+    <div class="trow">
+      <button type="button" id="tstart">Start</button>
+      <button type="button" class="ghost" id="treset">Reset</button>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>5. Notes worth reading</h2>
+  <ul class="notes">
+    <li class="hot"><b>The weight is mostly bone.</b> 4.72 lb bone-in yields roughly 3.2 to 3.5 lb of meat, which is a normal batch. Do not scale the seasoning up for 4.72 or you will overseason the dish.</li>
+    <li class="hot"><b>Why it takes longer than the original.</b> Their 2 plus 2 hours is for chuck, which has intramuscular fat to keep it moist. Shank is collagen, not fat, so it needs past 4 hours to turn to gelatin. Pulling it at 3 hours gives you chewy meat, not tender meat.</li>
+    <li class="hot" id="convnote" hidden><b>Convection.</b> Drop the dial to 275&deg;F and expect roughly 20 minutes less. But the pot has a lid on, so the fan never touches the food: no extra browning and no drying out, which is the usual convection worry. Keep the pot clear of the back wall so it does not sit over the fan inlet.</li>
+    <li><b>Thicken less than the recipe says.</b> Shank broth sets like jelly once chilled because of all the dissolved collagen. Start with 1 tbsp cornstarch, not 2.</li>
+    <li><b>Pot size.</b> A 5.5 quart Dutch oven is tight once the vegetables go in. If it will not fit, braise the meat alone and roast the vegetables on a sheet pan for the last 40 minutes.</li>
+    <li><b>Do not add potatoes early.</b> They turn to mush in 4 hours. Late addition is not optional.</li>
+    <li><b>Leftovers</b> keep 4 days refrigerated, 3 months frozen. The flavor is better on day two.</li>
+  </ul>
+</section>
+
+<footer>
+  <p>Adapted from <a href="https://www.spendwithpennies.com/perfect-pot-roast/">Spend With Pennies, Perfect Pot Roast</a> by Holly Nilsson. Quantities, cook times and the method changes are mine, not hers.</p>
+</footer>
+
+</div>
+
+<div class="dock">
+  <div class="inner">
+    <span id="dockstat">0 of 16 gathered</span>
+    <button type="button" id="reset">Reset</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var cut = "k", mode = "c";
+
+  var T = {
+    k: { braise:"2&frac12; hours", veg:"1&frac12; to 2 hours", total:"4 to 4&frac12; hours", probe:"3&frac12; hours", timer:252, salt:"2&frac12; tsp", yld:"3.2&ndash;3.5 lb", serve:"Serves 8" },
+    m: { braise:"2 hours", veg:"1&frac12; hours", total:"3&frac12; hours", probe:"3 hours", timer:210, salt:"2 tsp", yld:"3.4 lb", serve:"Serves 6" }
+  };
+
+  var $ = function(id){ return document.getElementById(id); };
+  var ing = Array.prototype.slice.call(document.querySelectorAll("ul.ing input[type=checkbox]"));
+
+  function applyCut(){
+    var t = T[cut];
+    $("stepbraise").innerHTML = t.braise;
+    $("stepveg").innerHTML = t.veg;
+    $("steptotal").innerHTML = t.total;
+    $("probeat").innerHTML = t.probe;
+    $("chipsalt").innerHTML = t.salt;
+    $("chipyield").innerHTML = t.yld;
+    $("yield").innerHTML = t.serve;
+    $("k1").setAttribute("aria-pressed", cut === "k" ? "true" : "false");
+    $("k2").setAttribute("aria-pressed", cut === "m" ? "true" : "false");
+    resetTimer();
+  }
+
+  function applyMode(){
+    var fan = mode === "v";
+    $("ebtemp").innerHTML = fan ? "275&deg;F" : "300&deg;F";
+    $("steptemp").innerHTML = fan ? "275&deg;F" : "300&deg;F";
+    $("convnote").hidden = !fan;
+    $("m1").setAttribute("aria-pressed", fan ? "false" : "true");
+    $("m2").setAttribute("aria-pressed", fan ? "true" : "false");
+  }
+
+  function applyQuantities(){
+    Array.prototype.forEach.call(document.querySelectorAll(".qty[data-a]"), function(el){
+      var v = cut === "k" ? el.getAttribute("data-a") : el.getAttribute("data-b");
+      if (v) el.innerHTML = v;
+    });
+  }
+
+  function progress(){
+    var n = ing.filter(function(i){ return i.checked; }).length;
+    var txt = n + " of " + ing.length + " gathered";
+    $("count").textContent = txt;
+    $("dockstat").textContent = txt;
+    $("barfill").style.width = (n / ing.length * 100) + "%";
+  }
+
+  // ---- timer ----
+  var endAt = 0, raf = 0;
+  function fmt(ms){
+    var s = Math.max(0, Math.round(ms / 1000));
+    var h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
+    return (h ? h + ":" + String(m).padStart(2,"0") : String(m)) + ":" + String(sec).padStart(2,"0");
+  }
+  function tick(){
+    var left = endAt - Date.now();
+    if (left <= 0){
+      $("clock").textContent = "00:00";
+      $("state").textContent = "Time is up. Check the shank with a fork now.";
+      endAt = 0; raf = 0;
+      if (navigator.vibrate) navigator.vibrate([200,120,200]);
+      return;
+    }
+    $("clock").textContent = fmt(left);
+    raf = requestAnimationFrame(tick);
+  }
+  function resetTimer(){
+    endAt = 0;
+    if (raf) cancelAnimationFrame(raf);
+    raf = 0;
+    $("clock").textContent = fmt(T[cut].timer * 1000);
+    $("state").textContent = "Start it the moment the pot goes in the oven.";
+  }
+  function startTimer(){
+    if (endAt) return;
+    var left = T[cut].timer * 1000;
+    if (/^\d+:\d\d$/.test($("clock").textContent) && $("state").textContent.indexOf("Start it") === -1){
+      // resuming after reset value untouched, keep full duration
+    }
+    endAt = Date.now() + left;
+    $("state").textContent = "Braising. The first stretch has no vegetables in the pot.";
+    raf = requestAnimationFrame(tick);
+  }
+
+  // ---- wire ----
+  $("k1").addEventListener("click", function(){ cut = "k"; applyCut(); applyQuantities(); });
+  $("k2").addEventListener("click", function(){ cut = "m"; applyCut(); applyQuantities(); });
+  $("m1").addEventListener("click", function(){ mode = "c"; applyMode(); });
+  $("m2").addEventListener("click", function(){ mode = "v"; applyMode(); });
+  ing.forEach(function(i){ i.addEventListener("change", progress); });
+  $("tstart").addEventListener("click", startTimer);
+  $("treset").addEventListener("click", resetTimer);
+  $("reset").addEventListener("click", function(){
+    ing.forEach(function(i){ i.checked = false; });
+    progress();
+    window.scrollTo({ top:0, behavior:"smooth" });
+  });
+
+  applyCut();
+  applyQuantities();
+  applyMode();
+  progress();
+})();
+</script>
+</body>
+</html>
