@@ -166,8 +166,8 @@ footer a{color:var(--accent-ink)}
     <li>Stir in the tomato paste and let it darken for 60 seconds against the hot pan.</li>
     <li>Pour in the wine and let it reduce by half, about 5 minutes. This is an extra step the original does not have, and it is worth it for shank.</li>
     <li>Add the broth, garlic, rosemary, thyme and bay leaf. Return the shank, bone side down if it has one. Liquid should come about halfway up the meat, not cover it.</li>
-    <li>Bring to a bare simmer on the stovetop, then cover and braise <b id="stepbraise">2&frac12; hours</b>.</li>
-    <li>Add the potatoes, carrots and celery around the meat. Cover and go another <b id="stepveg">1&frac12; to 2 hours</b>, so <b id="steptotal">4 to 4&frac12; hours</b> total.</li>
+    <li><b>Now it goes in the oven.</b> Bring the pot to a bare simmer on the stovetop, lid on, then transfer it to the <b id="ovtemp">300&deg;F</b> oven and braise <b id="stepbraise">2&frac12; hours</b>. Keep the lid on the whole time, and set the timer when the oven door closes.</li>
+    <li>Pull the pot out, take the lid off, and add the potatoes, carrots and celery around the meat. Lid back on, <b>back into the oven</b> for another <b id="stepveg">1&frac12; to 2 hours</b>, so <b id="steptotal">4 to 4&frac12; hours</b> total oven time.</li>
     <li>Check at <span id="probeat">3&frac12; hours</span>. Twist a fork in the thickest part: it should give almost no resistance, and the meat should be pulling back from the bone.
       <span class="warn">Undercooked shank is the one failure that ruins the dish. If it fights the fork, give it 30 more minutes and check again.</span></li>
     <li>Lift the shank out, rest it 10 minutes, then pull or slice it. Discard the bay leaf. Skim the fat from the liquid, bring it to a simmer, and whisk in a cornstarch slurry a little at a time. Add more only if it stays thin.</li>
@@ -244,6 +244,7 @@ footer a{color:var(--accent-ink)}
     var fan = mode === "v";
     $("ebtemp").innerHTML = fan ? "275&deg;F" : "300&deg;F";
     $("steptemp").innerHTML = fan ? "275&deg;F" : "300&deg;F";
+    if ($("ovtemp")) $("ovtemp").innerHTML = fan ? "275&deg;F" : "300&deg;F";
     $("convnote").hidden = !fan;
     $("m1").setAttribute("aria-pressed", fan ? "false" : "true");
     $("m2").setAttribute("aria-pressed", fan ? "true" : "false");
